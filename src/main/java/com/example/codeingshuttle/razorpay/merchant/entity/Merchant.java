@@ -3,11 +3,17 @@ package com.example.codeingshuttle.razorpay.merchant.entity;
 import com.example.codeingshuttle.razorpay.common.enums.BusinessType;
 import com.example.codeingshuttle.razorpay.common.enums.MerchantStatus;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.UUID;
 
 @Entity
-@Table(name= "merchant")
+@Table(name = "merchant")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Merchant {
 
     @Id
