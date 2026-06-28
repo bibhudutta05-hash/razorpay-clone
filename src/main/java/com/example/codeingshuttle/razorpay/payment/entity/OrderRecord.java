@@ -1,5 +1,6 @@
 package com.example.codeingshuttle.razorpay.payment.entity;
 
+import com.example.codeingshuttle.razorpay.common.entity.BaseEntity;
 import com.example.codeingshuttle.razorpay.common.entity.Money;
 import com.example.codeingshuttle.razorpay.common.enums.OrderStatus;
 import jakarta.persistence.*;
@@ -13,13 +14,16 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "order_record")
+@Table(name = "order_record", indexes = {
+        @Index(name = "idx_order_id_merchant_id", columnList = "id, merchant_id"),
+        @Index(name = "idx_order_merchant_id", columnList = "merchant_id")
+})
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class OrderRecord {
+public class OrderRecord  extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -50,3 +54,4 @@ public class OrderRecord {
     @Column(nullable = false)
     private LocalDateTime expiresAt;
 }
+
